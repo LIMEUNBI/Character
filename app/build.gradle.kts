@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.android.ksp)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -30,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        jvmToolchain(21)
     }
     buildFeatures {
         compose = true
@@ -50,6 +52,37 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.constraintlayout)
+
+    implementation(libs.work.runtime.ktx)
+    implementation(libs.glide)
+
+    implementation(libs.dagger.hilt.android)
+    implementation(libs.hilt.work)
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.datastore.core.android)
+    implementation(libs.androidx.datastore.preferences)
+    ksp(libs.dagger.hilt.compiler)
+    ksp(libs.dagger.hilt.android.compiler)
+    ksp(libs.hilt.work)
+    ksp(libs.hilt.compiler)
+
+    implementation(libs.gson)
+    implementation(libs.okhttp)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    implementation(libs.room.rxjava2)
+    ksp(libs.room.compiler)
+    annotationProcessor(libs.room.compiler)
+
+    implementation(libs.coil)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
