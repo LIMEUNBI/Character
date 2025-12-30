@@ -11,4 +11,6 @@
     <string name="item_detail_origin">기원</string>
     <string name="item_detail_location">위치</string>
     <string name="item_detail_created">생성일자 : %s</string>
+
+    <string name="txt_field_search_label">캐릭터를 검색하세요.</string>
 </resources>
