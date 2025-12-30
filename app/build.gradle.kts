@@ -8,9 +8,7 @@ plugins {
 
 android {
     namespace = "com.eunbi.character"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.eunbi.character"
@@ -63,8 +61,6 @@ dependencies {
     implementation(libs.dagger.hilt.android)
     implementation(libs.hilt.work)
     implementation(libs.hilt.navigation.compose)
-    implementation(libs.androidx.datastore.core.android)
-    implementation(libs.androidx.datastore.preferences)
     ksp(libs.dagger.hilt.compiler)
     ksp(libs.dagger.hilt.android.compiler)
     ksp(libs.hilt.work)
@@ -74,12 +70,6 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
-
-    implementation(libs.room.ktx)
-    implementation(libs.room.runtime)
-    implementation(libs.room.rxjava2)
-    ksp(libs.room.compiler)
-    annotationProcessor(libs.room.compiler)
 
     implementation(libs.coil)
 
