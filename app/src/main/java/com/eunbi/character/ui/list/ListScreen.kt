@@ -41,6 +41,14 @@ import com.google.gson.Gson
 @Composable
 fun ListScreen(navController: NavController, viewModel: ListViewModel) {
 
+    val listState = rememberLazyListState()
+
+    LaunchedEffect(listState.canScrollForward) {
+        if (!listState.canScrollForward) {
+            viewModel.getCharacterList()
+        }
+    }
+
     LaunchedEffect(Unit) {
         viewModel.effect.collect {
             when (it) {
@@ -106,7 +114,8 @@ fun ListScreen(navController: NavController, viewModel: ListViewModel) {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding)
-                    .background(color = Color.White)
+                    .background(color = Color.White),
+                state = listState
             ) {
                 items(state.characterList.results) { item ->
                     ListItem(item = item, itemClickListener = {

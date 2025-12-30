@@ -14,7 +14,8 @@ class ListContract {
     }
 
     data class State(
-        val characterList: CharacterInfo = CharacterInfo()
+        val characterList: CharacterInfo = CharacterInfo(),
+        val page: Int = 1
     ): ViewState
 
     sealed class Effect: ViewEffect {

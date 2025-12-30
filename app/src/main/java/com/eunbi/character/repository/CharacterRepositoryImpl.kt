@@ -6,10 +6,10 @@ import com.eunbi.character.network.CharacterApiInterface
 import com.eunbi.character.network.apiCallAndReturnThrow
 
 class CharacterRepositoryImpl: CharacterRepository {
-    override suspend fun getCharacterList(): CharacterInfo {
+    override suspend fun getCharacterList(page: Int): CharacterInfo {
         return apiCallAndReturnThrow {
             ApiServiceBuilder().apiGeneralBuilder(CharacterApiInterface::class.java)
-                .getCharacterList()
+                .getCharacterList(page)
         }
     }
 

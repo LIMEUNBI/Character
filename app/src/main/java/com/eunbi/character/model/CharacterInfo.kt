@@ -2,12 +2,12 @@ package com.eunbi.character.model
 
 data class CharacterInfo (
     val info: Info = Info(),
-    val results: List<Character> = listOf()
+    val results: ArrayList<Character> = arrayListOf()
 )
 
 data class Info(
     val count: Int = 0,
-    val pages: Int = 0,
+    val pages: Int = 1,
     val next: String? = "",
     val prev: String? = ""
 )
