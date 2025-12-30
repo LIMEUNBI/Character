@@ -1,17 +1,20 @@
 package com.eunbi.character.ui.detail
 
 import com.eunbi.character.base.BaseViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 
-@HiltViewModel
-class DetailViewModel: BaseViewModel<DetailContract.Event, DetailContract.State, DetailContract.Effect>() {
+class DetailViewModel : BaseViewModel<DetailContract.Event, DetailContract.State, DetailContract.Effect>() {
 
-    override fun setInitialState(): DetailContract.State {
-        TODO("Not yet implemented")
-    }
+    override fun setInitialState() = DetailContract.State()
 
     override fun handleEvents(event: DetailContract.Event) {
-        TODO("Not yet implemented")
-    }
+        when (event) {
+            is DetailContract.Event.ClickToBack -> {
+                setEffect { DetailContract.Effect.MoveToBack }
+            }
 
+            is DetailContract.Event.SetInfo -> {
+                setState { copy(character = event.character) }
+            }
+        }
+    }
 }
